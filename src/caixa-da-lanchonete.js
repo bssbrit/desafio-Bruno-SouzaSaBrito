@@ -15,9 +15,16 @@ class CaixaDaLanchonete {
     for (let i = 0; i < itensComida.length; i++) {
       //cada item do array é divido em duas variáveis
       let [codigo, quantidade] = itensComida[i].split(",");
+      let statusDoPedido;
+      if (codigo == "chantily" || codigo == "queijo") {
+        statusDoPedido = this.conferirExtras(codigo, itensComida);
+      }
       quantidade = parseInt(quantidade);
+
       if (quantidade == 0) {
-        return console.log("Quantidade Inválida");
+        return "Quantidade inválida!";
+      } else if (statusDoPedido == false) {
+        return "Item extra não pode ser pedido sem o principal";
       } else {
         let confirmacao = false;
         //for loop para achar o valor baseado no código da comida
@@ -27,39 +34,68 @@ class CaixaDaLanchonete {
             confirmacao = true;
           }
         }
-        if (confirmacao == false) return console.log("codigo inválido");
+        if (confirmacao == false) return "Item inválido!";
       }
     }
     console.log(carrinhoDeCompra);
     return carrinhoDeCompra;
   }
+  conferirExtras(codigo, itens) {
+    let confirmar = false;
+    if (codigo == "chantily") {
+      for (let i = 0; i < itens.length; i++) {
+        let [principal] = itens[i].split(",");
+        if (principal == "cafe") confirmar = true;
+      }
+    } else {
+      for (let i = 0; i < itens.length; i++) {
+        let [principal] = itens[i].split(",");
+
+        if (principal == "sanduiche") confirmar = true;
+      }
+    }
+    return confirmar;
+  }
   formaDePagamento(metodoDePagamento, carrinhoDeCompra) {
     switch (metodoDePagamento) {
       case "credito":
-        return carrinhoDeCompra * 1.05;
+        return (carrinhoDeCompra * 1.03).toFixed(2);
         break;
       case "debito":
-        return carrinhoDeCompra;
+        return carrinhoDeCompra.toFixed(2);
         break;
       case "dinheiro":
-        return carrinhoDeCompra * 0.95;
+        return (carrinhoDeCompra * 0.95).toFixed(2);
         break;
       default:
-        console.log("Forma de pagamento inválida!");
+        return "Forma de pagamento inválida!";
         break;
     }
   }
   calcularValorDaCompra(metodoDePagamento, itens) {
-    console.log(metodoDePagamento);
-    return `R$${this.calcularComida(itens)}`;
+    if (itens.length == 0) return "Não há itens no carrinho de compra!";
+
+    let valor = this.calcularComida(itens, this.cardapio);
+
+    if (typeof valor === "string") {
+      return valor;
+    } else {
+      let valor2 = this.formaDePagamento(
+        metodoDePagamento,
+        this.calcularComida(itens, this.cardapio)
+      );
+      if (typeof valor2 === "string") {
+        let resultado = valor2.replace(".", ",");
+        return `R$ ${resultado}`;
+      }
+    }
   }
 }
-
 const xizao = new CaixaDaLanchonete();
-xizao.calcularComida(["combo1,1", "combo1,1", "cafi,2"]);
-/* console.log(
-  xizao.calcularValorDaCompra(1, ["combo1,1", "combo2,1", "salgado,2"])
-); */
-let valor = xizao.calcularComida(["combo1,1", "combo2,1", "salgado,2"]);
-console.log(xizao.formaDePagamento("credito", valor));
+
+console.log(
+  xizao.calcularValorDaCompra("credito", ["combo2,1", "cafe,1", "chantily,2"])
+  /*   xizao.calcularValorDaCompra("debito", ["combo2,1", "cafe,1", "chantily,2"]),
+  xizao.calcularValorDaCompra("dinheiro", ["combo2,1", "cafe,1", "chantily,2"]) */
+);
 export { CaixaDaLanchonete };
