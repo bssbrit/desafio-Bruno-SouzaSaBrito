@@ -59,13 +59,13 @@ class CaixaDaLanchonete {
   formaDePagamento(metodoDePagamento, carrinhoDeCompra) {
     switch (metodoDePagamento) {
       case "credito":
-        return (carrinhoDeCompra * 1.03).toFixed(2);
+        return `R$ ${(carrinhoDeCompra * 1.03).toFixed(2)}`;
         break;
       case "debito":
-        return carrinhoDeCompra.toFixed(2);
+        return `R$ ${carrinhoDeCompra.toFixed(2)}`;
         break;
       case "dinheiro":
-        return (carrinhoDeCompra * 0.95).toFixed(2);
+        return `R$ ${(carrinhoDeCompra * 0.95).toFixed(2)}`;
         break;
       default:
         return "Forma de pagamento inválida!";
@@ -86,7 +86,7 @@ class CaixaDaLanchonete {
       );
       if (typeof valor2 === "string") {
         let resultado = valor2.replace(".", ",");
-        return `R$ ${resultado}`;
+        return resultado;
       }
     }
   }
@@ -94,7 +94,7 @@ class CaixaDaLanchonete {
 const xizao = new CaixaDaLanchonete();
 
 console.log(
-  xizao.calcularValorDaCompra("credito", ["combo2,1", "cafe,1", "chantily,2"])
+  xizao.calcularValorDaCompra("credieto", ["combo2,1", "cafe,1", "chantily,2"])
   /*   xizao.calcularValorDaCompra("debito", ["combo2,1", "cafe,1", "chantily,2"]),
   xizao.calcularValorDaCompra("dinheiro", ["combo2,1", "cafe,1", "chantily,2"]) */
 );
