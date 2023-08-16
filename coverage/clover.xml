@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1692114344994" clover="3.2.0">
-  <project timestamp="1692114344995" name="All files">
-    <metrics statements="101" coveredstatements="97" conditionals="34" coveredconditionals="30" methods="5" coveredmethods="5" elements="140" coveredelements="132" complexity="0" loc="101" ncloc="101" packages="1" files="1" classes="1"/>
+<coverage generated="1692196441605" clover="3.2.0">
+  <project timestamp="1692196441606" name="All files">
+    <metrics statements="103" coveredstatements="99" conditionals="34" coveredconditionals="30" methods="5" coveredmethods="5" elements="142" coveredelements="134" complexity="0" loc="103" ncloc="103" packages="1" files="1" classes="1"/>
     <file name="caixa-da-lanchonete.js" path="/home/bruno/repos/desafioLanchoneteDB/src/caixa-da-lanchonete.js">
-      <metrics statements="101" coveredstatements="97" conditionals="34" coveredconditionals="30" methods="5" coveredmethods="5"/>
+      <metrics statements="103" coveredstatements="99" conditionals="34" coveredconditionals="30" methods="5" coveredmethods="5"/>
       <line num="1" count="20" type="cond" truecount="1" falsecount="0"/>
       <line num="2" count="20" type="stmt"/>
       <line num="3" count="20" type="stmt"/>
@@ -95,16 +95,18 @@
       <line num="89" count="10" type="stmt"/>
       <line num="90" count="10" type="stmt"/>
       <line num="91" count="10" type="stmt"/>
-      <line num="92" count="20" type="stmt"/>
-      <line num="93" count="20" type="stmt"/>
-      <line num="94" count="1" type="stmt"/>
-      <line num="95" count="1" type="stmt"/>
+      <line num="92" count="10" type="stmt"/>
+      <line num="93" count="10" type="stmt"/>
+      <line num="94" count="20" type="stmt"/>
+      <line num="95" count="20" type="stmt"/>
       <line num="96" count="1" type="stmt"/>
       <line num="97" count="1" type="stmt"/>
       <line num="98" count="1" type="stmt"/>
       <line num="99" count="1" type="stmt"/>
       <line num="100" count="1" type="stmt"/>
       <line num="101" count="1" type="stmt"/>
+      <line num="102" count="1" type="stmt"/>
+      <line num="103" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

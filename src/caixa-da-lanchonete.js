@@ -83,11 +83,9 @@ class CaixaDaLanchonete {
       let valor2 = this.formaDePagamento(
         metodoDePagamento,
         this.calcularComida(itens, this.cardapio)
-      );
-      if (typeof valor2 === "string") {
-        let resultado = valor2.replace(".", ",");
-        return resultado;
-      }
+      ).replace(".", ",");
+
+      return valor2;
     }
   }
 }
